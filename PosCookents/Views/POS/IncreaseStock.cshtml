@@ -1,0 +1,44 @@
+﻿@model List<PosCookents.Models.Stock>
+@{
+    ViewBag.Title = "IncreaseStock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container jumbotron text-center">
+    <h2>Increase an Existing item's Stocks</h2>
+    <table class="table-bordered table-responsive" align="center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quentity</th>
+                <th>New Quentity</th>
+            </tr>
+        </thead>
+        @foreach (var products in Model)
+        {
+                <tbody>
+                    <tr>
+                        <td>@products.Item.Name</td>
+                        <td>@products.Quantity</td>
+                        <td>
+                            @using (Html.BeginForm("ListingItems2", "POS", new { itemId = products.ItemId }))
+                            {
+                                <label for="Quantity"></label>
+                                @Html.TextBox("Quantity")
+                                <button type="submit" class="btn btn-primary">Add to Stock</button>
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+
+                }
+            </table>
+        @using (Html.BeginForm("Admin", "POS"))
+        {
+            <button type="submit" class="btn btn-primary">Go Back To Admin's Options</button>
+        }
+        @using (Html.BeginForm("ShowStocks", "POS"))
+        {
+            <button type="submit" class="btn btn-primary">See The Stock</button>
+        }
+        </div>
+

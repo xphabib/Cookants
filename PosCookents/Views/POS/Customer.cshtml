@@ -1,0 +1,50 @@
+﻿@model List<PosCookents.Models.Stock>
+
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container jumbotron text-center">
+    <table class="table-bordered table-responsive" align="center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quentity (In Stock)</th>
+                <th>Enter Quentity</th>
+            </tr>
+        </thead>
+        @foreach (var products in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@products.Item.Name</td>
+                    <td>@products.Item.Price</td>
+                    <td>@products.Quantity Pieces</td>
+                    <td>
+                        @using (Html.BeginForm("ListingItems", "POS", new { ItemId = products.Item.Id }))
+                        {
+                            <label for="Quantity"></label>
+                            @Html.TextBox("Quantity")
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+
+    <div>
+        @using (Html.BeginForm("CheckOut", "POS"))
+        {
+            <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
+        }
+    </div>
+
+    <div>
+        @using (Html.BeginForm("UserType", "POS"))
+        {
+            <button type="submit" class="btn btn-primary">Go Back To Home</button>
+        }
+    </div>
+</div>

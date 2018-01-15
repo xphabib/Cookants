@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "AddNewItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container jumbotron">
+    <h2 class="text-primary"><b>ADD A NEW ITEM</b></h2>
+@using (Html.BeginForm("SuccessOfAddedItem", "POS"))
+{
+    <table class="table-bordered table-responsive" align="center">
+        <thead>
+            <tr>
+                <th>Enter The Item's Name</th>
+                <th>Enter The Item's Price</th>
+                <th>Enter The Item's Quantity</th>
+            </tr>
+        </thead>
+
+        
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="itemName"></label>
+                        @Html.TextBox("itemName")
+                    </td>
+                    <td>
+                        <label for="itemPrice"></label>
+                        @Html.TextBox("itemPrice")
+                    </td>
+                    <td>
+                        <label for="itemQuantity"></label>
+                        @Html.TextBox("itemQuantity")
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Add To Item's List</button>
+}
+    
+        @using (Html.BeginForm("Admin", "POS"))
+        {
+            <button type="submit" class="btn btn-primary">Back</button>
+        }
+</div>

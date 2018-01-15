@@ -1,0 +1,39 @@
+﻿@model List<PosCookents.Models.Stock>
+@{
+    ViewBag.Title = "SuccessOfAddedItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container jumbotron text-center">
+    <h2>You Have Successfully Added A New Item</h2>
+    <table class="table-bordered table-responsive" align="center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quentity (In Stock)</th>
+            </tr>
+        </thead>
+        @foreach (var products in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@products.Item.Name</td>
+                    <td>@products.Item.Price</td>
+                    <td>@products.Quantity</td>
+                </tr>
+            </tbody>
+
+        }
+    </table>
+
+        @using (Html.BeginForm("AddNewItem", "POS"))
+        {
+            <button type="submit" class="btn btn-primary">Add An Another New Item</button>
+        }
+
+        @using (Html.BeginForm("Admin", "POS"))
+        {
+            <button type="submit" class="btn btn-primary">Go Back to Admin's Options</button>
+        }
+

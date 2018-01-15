@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "UserType";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container jumbotron text-center">
+
+        <h2>Choose Your User Type</h2>
+
+        @using (Html.BeginForm("Admin", "POS"))
+        {
+            <button type="submit" class="btn btn-primary">Admin</button>
+        }
+
+        @using (Html.BeginForm("Customer", "POS"))
+        {
+            <button type="submit" class="btn btn-primary">Customer</button>
+        }
+</div>

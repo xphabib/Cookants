@@ -1,0 +1,16 @@
+﻿@model IEnumerable<PosCookents.Models.UserModel>
+
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User</h2>
+
+<p>
+    @Html.ActionLink("Registration", "Regrstration", "UserModels")
+</p>
+
+<p>
+    @Html.ActionLink("Login", "#")
+</p>

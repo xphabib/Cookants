@@ -1,0 +1,50 @@
+﻿@model List<PosCookents.Models.BoughtItem>
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var a = 0;
+}
+<div class="container jumbotron text-center">
+    <h2>Your Bought Items</h2>
+    <table class="table-bordered table-responsive" align="center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quentity</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+
+        @foreach (var boughtItems in Model)
+        {
+            <tr>
+                <td>@boughtItems.Item.Name</td>
+                <td>@boughtItems.Item.Price</td>
+                <td>@boughtItems.Quantity</td>
+                <td>@(boughtItems.Quantity * boughtItems.Item.Price)</td>
+            </tr>
+
+
+            a += (@boughtItems.Quantity * @boughtItems.Item.Price);
+        }
+    </table>
+
+        <div>
+            <h4>Grand Total: @a BDT</h4>
+        </div>
+
+        <div>
+            @using (Html.BeginForm("ClearCart", "POS"))
+            {
+                <button type="submit" class="btn btn-primary">Shop Again</button>
+            }
+        </div>
+
+        <div>
+            @using (Html.BeginForm("UserType", "POS"))
+            {
+                <button type="submit" class="btn btn-primary">Go Back To Home</button>
+            }
+        </div>
+</div>
